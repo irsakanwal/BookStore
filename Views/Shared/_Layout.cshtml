@@ -188,15 +188,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                             </li>
-                        }
-                        if (user != null && id != null && userType == "user")
-                        {
+                         }
+                         if (user != null && id != null && userType == "user")
+                         {
 
-                           
+                            <li>
+                                <a href="~/Home/editProfile" class="color1">Edit Profile</a>
+
+                            </li>
                             <li>
                                 <a href="~/Home/logout" class="color1">logout</a>
-
-
 
                             </li>
 
@@ -225,7 +226,91 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 </ul>
 
+                <script>
+                    $(document).ready(function () {
+
+                        $('#check').hide();
+                        
+
+                //on search type change
+                $('#searchtype').click(function () {
+                    var item = $('#searchtype').val();
+                $('#check').show();
+                $.getJSON("/Home/getItem?searchtype=" + item, function (data) {
+                    $('#check').hide();
+                    if (data != null) {
+                        $('#search-box-input').empty();
+                        $.each(data, function (i, item) {
+                            $("#search-box-input").append('<option value=' + item + '>' + item + ' <option>');
+
+                        });
+                        $('#search-box-input').show();
+                    }
+                    $('#search-box-input').change(function () {
+                        var item = $('#searchtype').val();
+                        var n = $('#search-box-input').val();
+                        $.getJSON("/Home/getItemfromDb?search-box-input=" + n + "&searchtype="+item, function (data) {
+
+                            if (data != null)
+                                $.each(data, function (i, item) {
+                                    $("#prod").append(' <a href="single.html"><img style="height:200px;width:180px" src="~/Files/' + item.file + '"></a><p>Name:' + item.name + '</p>')
+                                });
+                            else
+                                alert("no data");
+
+
+
+
+                        });
+                    });
+
+                    });
+                    });
+                    });
+
+
+                </script>
+                @{
+                    
+                        if (user != null && id != null && userType == "user")
+                        {
+
+                            <div style="margin-top:15px" >
+
+                               
+                                <div class="" >
+                                    <form action="~/Home/search" accept-charset="character set" method="post"> 
+                                         <select id="searchtype" name="type" style="width:100px" onchange="getval(this);">
+
+
+                                    <option value="Author">Author</option>
+
+                                    <option value="Price">Price</option>
+
+                                </select>
+
+                                <select id="search-box-input" name="value" style="width:150px " >
+                                    <option value="0" >Search by..</option>
+
+                                </select>
+                                        <input type="submit" value="search" >
+                                    </form>
+
+                                </div>
+                                
+
+
+                            </div>
+                            <p id="check" style="color:rosybrown ; align-content:center">checking....</p>
+                            
+
+                    }
+                }
+
                 
+
+               
+                <div class="clearfix"></div>
 
           
                

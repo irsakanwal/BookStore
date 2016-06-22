@@ -39,9 +39,9 @@
 .megamenu>li.showhide span.title{margin:15px 0 0 25px;float:left}.megamenu>li.showhide span.icon1:after{position:absolute;content:"";right:25px;top:15px;height:3px;width:25px;font-size:50px;border-top:3px solid #333;border-bottom:3px solid #333;z-index:1}
 .megamenu>li.showhide span.icon2:after{position:absolute;content:"";right:25px;top:27px;height:3px;width:25px;font-size:50px;border-top:3px solid #333;border-bottom:3px solid #333;z-index:1}
 .skyblue,.skyblue>li.showhide{
-	   width: 72%;
+	   width: 50%;
   float: left;
-  margin-right: 2%;;
+  margin-right: 10%;;
 }
 	
 .skyblue li>a,.skyblue>li.showhide span{color:#204056}
